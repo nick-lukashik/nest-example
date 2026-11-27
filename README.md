@@ -203,7 +203,7 @@ docker run --rm --read-only --tmpfs /tmp --user 10001:10001 --network nest-examp
   -e DATABASE_URL=postgres://app:app@postgres:5432/app nest-example node dist/db/migrate.js
 ```
 
-- Base `node:26.13.0-trixie-slim`. Stages: `deps` (pnpm from `packageManager`) → `build` (`dist/`) and `prod-deps` (`node_modules` without dev dependencies) → `runtime`.
+- Base `node:26.13.1-trixie-slim`. Stages: `deps` (pnpm from `packageManager`) → `build` (`dist/`) and `prod-deps` (`node_modules` without dev dependencies) → `runtime`.
 - `APP_VERSION` is the only build arg: nothing environment-specific is baked in, so one image runs on stage and prod.
 - App files are owned by root, the app runs as uid `10001` and writes nothing: a read-only root filesystem works, only `/tmp` is writable.
 - `PORT` is 3000 in the image (the local default without it is 4000), metrics on `METRICS_PORT` 9464. `HEALTHCHECK` polls `/health/ready` for `docker run`; Kubernetes ignores it and uses its probes.
