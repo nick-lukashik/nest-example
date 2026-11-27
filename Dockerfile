@@ -6,7 +6,7 @@
 # node dist/db/migrate.js (Argo CD Sync-hook Job, wave 0, before the Deployment).
 
 # base: the Node image every stage starts from. Renovate updates the tag.
-FROM node:26.13.0-trixie-slim AS base
+FROM node:26.13.1-trixie-slim AS base
 WORKDIR /app
 
 # deps: pnpm and the manifests.
